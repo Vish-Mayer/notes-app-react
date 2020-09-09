@@ -27,6 +27,15 @@ describe('Notes', () => {
   test('renders a button with text "Create Note"', () => {
     expect(wrapper.find("#submit").text()).toBe("Create Note")
   })
+
+  test('saves the input state', () => {
+    let textInput = wrapper.find('.text-input').first()
+    textInput.simulate('change', {
+      target: { value: "New Note"}
+    })
+    textInput = wrapper.find('.text-input').first()
+    expect(textInput.props().value).toEqual('New Note')
+  })
 });
 
 
