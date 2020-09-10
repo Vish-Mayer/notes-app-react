@@ -34,7 +34,7 @@ class App extends Component {
         <h1>Notes Application</h1>
         <form id= "new-note-form" onSubmit={this.addItem.bind(this)}>
           <input type="text" className="text-input" placeholder="Enter Text"
-          value={this.state.currentItem.text}
+          value={this.state.currentItem}
           onChange={this.handleInput.bind(this)}/>
           <button id="submit">Create Note</button>
         </form>

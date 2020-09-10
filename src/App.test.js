@@ -29,12 +29,15 @@ describe('Notes', () => {
   })
 
   test('saves the input state', () => {
+    const dateNowStub = jest.fn(() => 1530518207007);
+    global.Date.now = dateNowStub;
     let textInput = wrapper.find('.text-input').first()
     textInput.simulate('change', {
       target: { value: "New Note"}
     })
     textInput = wrapper.find('.text-input').first()
-    expect(textInput.props().value).toEqual('New Note')
+    expect(textInput.props().value.key).toEqual(Date.now())
+    expect(textInput.props().value.text).toEqual('New Note')
   })
 });
 
