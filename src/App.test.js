@@ -59,6 +59,18 @@ describe('Notes', () => {
      })
     expect(global.alert).toBeCalledWith("you have added a new todo: New Note")
   })
+
+  it('deletes a note', () => {
+    simulateChangeonInput(wrapper, '#text-input', 'New Note')
+    jest.spyOn(window, 'alert').mockImplementation(() => {})
+    wrapper.find('#submit').simulate('click', {
+      preventDefault: () => {
+      }
+     })
+    wrapper.find('#delete').simulate('click')
+    let textOutput = wrapper.find('#text-output')
+    expect(textOutput).toEqual({});
+  })
 });
 
 

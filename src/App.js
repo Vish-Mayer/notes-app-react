@@ -39,6 +39,14 @@ class App extends Component {
     window.alert('you have added a new todo: ' + newItem.body);
   }
 
+  deleteItem(id) {
+    const list = [...this.state.list]
+    const updateList = list.filter(item => item.id !== id)
+    this.setState ({
+      list: updateList
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -66,7 +74,7 @@ class App extends Component {
               key={item.id}>
                 {item.body}
                 &nbsp;
-                <button>
+                <button id='delete' onClick={() => this.deleteItem(item.id)}>
                   x
                 </button>  
               </li>
