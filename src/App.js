@@ -76,7 +76,7 @@ class App extends Component {
                 &nbsp;
                 <button id='delete' onClick={() => this.deleteItem(item.id)}>
                   x
-                </button>  
+                </button>
               </li>
             )
           })}

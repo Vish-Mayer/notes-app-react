@@ -66,7 +66,7 @@ describe('Notes', () => {
     simulateChangeonClick(wrapper, '#submit')
     wrapper.find('#delete').simulate('click')
     let textOutput = wrapper.find('#text-output')
-    expect(textOutput).toEqual({});
+    expect(textOutput.children().length).toBe(0);
   })
 });
 
