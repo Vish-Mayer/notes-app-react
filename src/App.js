@@ -27,16 +27,31 @@ class App extends Component {
   addItem(e) {
     e.preventDefault();
     const newItem = this.state.item
-    const list = [...this.state.list]
-    list.push(newItem)
-    this.setState ({
+    if(newItem.body === ""){
+      alert('Field cannot be left blank.')
+    } else {
+      const list = [...this.state.list]
+      list.push(newItem)
+      this.setState ({
       list,
       item:{
-        body: '',
-        id: ''
+      body: '',
+      id: ''
       }
     })
     window.alert('you have added a new todo: ' + newItem.body);
+
+    }
+    // const list = [...this.state.list]
+    // list.push(newItem)
+    // this.setState ({
+    //   list,
+    //   item:{
+    //     body: '',
+    //     id: ''
+    //   }
+    // })
+    // window.alert('you have added a new todo: ' + newItem.body);
   }
 
   deleteItem(id) {

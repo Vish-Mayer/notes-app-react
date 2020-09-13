@@ -48,6 +48,19 @@ describe('Notes', () => {
     expect(updateInput.props().value).toEqual('New Note')
   })
 
+  it('does not allow user to submit a blank field', () => {
+    simulateChangeonInput(wrapper, '#text-input', '')
+    simulateChangeonClick(wrapper, '#submit')
+    let textOutput = wrapper.find('#text-output')
+    expect(textOutput.children().length).toBe(0);
+  })
+
+  it('alerts the user when a user submits a blank field', () => {
+    simulateChangeonInput(wrapper, '#text-input', '')
+    simulateChangeonClick(wrapper, '#submit')
+    expect(global.alert).toBeCalledWith('Field cannot be left blank.')
+  })
+
   it('renders the new note on the page with a button to delete note', () => {
     simulateChangeonInput(wrapper, '#text-input', 'New Note')
     simulateChangeonClick(wrapper, '#submit')
