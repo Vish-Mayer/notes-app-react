@@ -23,6 +23,11 @@ const simulateChangeonClick = (wrapper, inputSelector) => {
     })
 }
 
+const simulateVaildSubmit = (wrapper) => {
+  simulateChangeonInput(wrapper, '#text-input', 'New Note')
+  simulateChangeonClick(wrapper, '#submit')
+}
+
 describe('Notes', () => {
 
   let wrapper;
@@ -62,21 +67,18 @@ describe('Notes', () => {
   })
 
   it('renders the new note on the page with a button to delete note', () => {
-    simulateChangeonInput(wrapper, '#text-input', 'New Note')
-    simulateChangeonClick(wrapper, '#submit')
+    simulateVaildSubmit(wrapper)
     let textOutput = wrapper.find('#text-output')
     expect(textOutput.props().children).toEqual["New Note", <button>x</button>]
   })
 
   it('alerts a user when a new note is added', () => {
-    simulateChangeonInput(wrapper, '#text-input', 'New Note')
-    simulateChangeonClick(wrapper, '#submit')
+    simulateVaildSubmit(wrapper)
     expect(global.alert).toBeCalledWith("you have added a new todo: New Note")
   })
 
   it('deletes a note', () => {
-    simulateChangeonInput(wrapper, '#text-input', 'New Note')
-    simulateChangeonClick(wrapper, '#submit')
+    simulateVaildSubmit(wrapper)
     wrapper.find('#delete').simulate('click')
     let textOutput = wrapper.find('#text-output')
     expect(textOutput.children().length).toBe(0);
