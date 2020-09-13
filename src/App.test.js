@@ -7,6 +7,13 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
+const simulateChangeonInput = (wrapper, inputSelector ,newValue) => {
+  const input = wrapper.find(inputSelector)
+  input.simulate('change', {
+    target: {value: newValue}
+  })
+  return wrapper.find(inputSelector)
+}
 describe('Notes', () => {
 
   let wrapper;
@@ -28,20 +35,12 @@ describe('Notes', () => {
   })
 
   it('saves the input state', () => {
-    let textInput = wrapper.find('#text-input').first()
-    textInput.simulate('change', {
-      target: { value: "New Note"}
-    })
-    textInput = wrapper.find('#text-input').first()
-    expect(textInput.props().value).toEqual('New Note')
+    const updateInput = simulateChangeonInput(wrapper, '#text-input', 'New Note')
+    expect(updateInput.props().value).toEqual('New Note')
   })
   it('renders the new note on the page', () => {
-    
-    let textInput = wrapper.find('#text-input').first()
-    textInput.simulate('change', {
-      target: { value: "New Note"}
-    })
-    textInput = wrapper.find('#text-input').first()
+    const updateInput = simulateChangeonInput(wrapper, '#text-input', 'New Note')
+    expect(updateInput.props().value).toEqual('New Note')
     wrapper.find('#submit').simulate('click', {
       preventDefault: () => {
       }
