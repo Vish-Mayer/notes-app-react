@@ -37,6 +37,7 @@ class App extends Component {
         id: ''
       }
     })
+    window.alert('you have added a new todo: ' + newItem.body);
   }
 
   render() {
