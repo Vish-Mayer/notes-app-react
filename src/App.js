@@ -15,10 +15,10 @@ class App extends Component {
     }
   }
 
-  handleInput(event) {
+  handleInput(e) {
     this.setState ({
       item:{
-        body: event.target.value,
+        body: e.target.value,
         id: Date.now()
       }
     })
@@ -29,7 +29,6 @@ class App extends Component {
     const newItem = this.state.item
     const list = [...this.state.list]
     list.push(newItem)
-    console.log(list)
     this.setState ({
       list,
       item:{
@@ -52,7 +51,6 @@ class App extends Component {
           value={this.state.item.body}
           onChange={this.handleInput.bind(this)}
           >
-          
           </input>
           <button
           id='submit' 
@@ -61,15 +59,17 @@ class App extends Component {
           </button>
         </form>
         <br/>
-        
           {this.state.list.map(item => {
             return (            
               <li
               id='text-output' 
               key={item.id}>
                 {item.body}
+                &nbsp;
+                <button>
+                  x
+                </button>  
               </li>
-              
             )
           })}
       </div>

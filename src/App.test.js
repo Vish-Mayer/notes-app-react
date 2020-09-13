@@ -38,24 +38,25 @@ describe('Notes', () => {
     const updateInput = simulateChangeonInput(wrapper, '#text-input', 'New Note')
     expect(updateInput.props().value).toEqual('New Note')
   })
-  it('renders the new note on the page', () => {
+
+  it('renders the new note on the page with a button to delete note', () => {
     simulateChangeonInput(wrapper, '#text-input', 'New Note')
-    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    jest.spyOn(window, 'alert').mockImplementation(() => {})
     wrapper.find('#submit').simulate('click', {
       preventDefault: () => {
       }
-     });
-    
+     })
     let textOutput = wrapper.find('#text-output')
-    expect(textOutput.props().children).toEqual("New Note")
+    expect(textOutput.props().children).toEqual["New Note", <button>x</button>]
   })
+
   it('alerts a user when a new note is added', () => {
     simulateChangeonInput(wrapper, '#text-input', 'New Note')
-    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    jest.spyOn(window, 'alert').mockImplementation(() => {})
     wrapper.find('#submit').simulate('click', {
       preventDefault: () => {
       }
-     });
+     })
     expect(global.alert).toBeCalledWith("you have added a new todo: New Note")
   })
 });
