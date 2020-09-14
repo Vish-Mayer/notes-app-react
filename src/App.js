@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListItems from './ListItems'
 import './App.css';
 
 class App extends Component {
@@ -40,28 +41,17 @@ class App extends Component {
       }
     })
     window.alert('you have added a new todo: ' + newItem.body);
-
     }
-    // const list = [...this.state.list]
-    // list.push(newItem)
-    // this.setState ({
-    //   list,
-    //   item:{
-    //     body: '',
-    //     id: ''
-    //   }
-    // })
-    // window.alert('you have added a new todo: ' + newItem.body);
   }
 
   deleteItem(id) {
-    const list = [...this.state.list]
-    const updateList = list.filter(item => item.id !== id)
-    this.setState ({
-      list: updateList
-    })
+    const filteredList = this.state.list.filter(item =>
+      item.id !== id);
+      this.setState({
+        list: filteredList
+      })
   }
-
+    
   render() {
     return (
       <div className="App">
@@ -81,20 +71,12 @@ class App extends Component {
             submit
           </button>
         </form>
+        
+        <ListItems 
+          list={this.state.list}
+          deleteItem = {this.deleteItem.bind(this)}>
+        </ListItems>
         <br/>
-          {this.state.list.map(item => {
-            return (            
-              <li
-              id='text-output' 
-              key={item.id}>
-                {item.body}
-                &nbsp;
-                <button id='delete' onClick={() => this.deleteItem(item.id)}>
-                  x
-                </button>
-              </li>
-            )
-          })}
       </div>
     );
   }
