@@ -6,7 +6,7 @@ function ListItems(props) {
     {
       return <div id='text-output' key={index}>
             <p>
-              {item.body } 
+              <input type="text" id={index} value={item.body} />
               &nbsp;
               <button
               id="delete"

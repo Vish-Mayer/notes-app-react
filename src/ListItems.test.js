@@ -14,7 +14,7 @@ describe('ListItems', () => {
   
   beforeEach(() => {
     deleteItemMock = jest.fn();
-    itemsMock = [{body: "New note", id: "12345"}]
+    itemsMock = [{body: "New Note", id: "12345"}]
     wrapper = shallow(<ListItems list={itemsMock} deleteItem={deleteItemMock}/>)
   });
 
@@ -23,8 +23,7 @@ describe('ListItems', () => {
   });
 
   it('renders the new note on the page', () => {
-    const textEl = wrapper.find("#text-output p")
-    expect(textEl.text()).toContain("New note") 
+    expect(wrapper.find('input').props().value).toBe('New Note') 
   })
 
   it('deletes a note from the list', () => {
