@@ -66,23 +66,10 @@ describe('Notes', () => {
     expect(global.alert).toBeCalledWith('Field cannot be left blank.')
   })
 
-  // it('renders the new note on the page with a button to delete note', () => {
-  //   simulateVaildSubmit(wrapper)
-  //   let textOutput = wrapper.find('#text-output')
-  //   expect(textOutput.props().children).toEqual["New Note", <button>x</button>]
-  // })
-
   it('alerts a user when a new note is added', () => {
     simulateVaildSubmit(wrapper)
     expect(global.alert).toBeCalledWith("you have added a new todo: New Note")
   })
-
-  // it('deletes a note', () => {
-  //   simulateVaildSubmit(wrapper)
-  //   wrapper.find('#delete').simulate('click')
-  //   let textOutput = wrapper.find('#text-output')
-  //   expect(textOutput.children().length).toBe(0);
-  // })
 });
 
 

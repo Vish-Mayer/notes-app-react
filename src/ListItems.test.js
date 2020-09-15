@@ -25,6 +25,11 @@ describe('ListItems', () => {
   })
 
   it('deletes an item from the list', () => {
+    const deleteItemMock = jest.fn();
+    const items = [{body: "New note", id: "12345"}]
   
+    wrapper = shallow(<ListItems list={items} deleteItem={deleteItemMock}/>)
+    wrapper.find('#delete').simulate('click')
+    expect(deleteItemMock).toHaveBeenCalledWith("12345")
   })
 });
