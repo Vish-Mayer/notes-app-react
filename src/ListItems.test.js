@@ -9,10 +9,13 @@ configure({ adapter: new Adapter() });
 describe('ListItems', () => {
 
   let wrapper;
-
+  let deleteItemMock
+  let itemsMock
+  
   beforeEach(() => {
-    const items = [{body: "New note", id: "12345"}]
-    wrapper = shallow(<ListItems list={items}/>)
+    deleteItemMock = jest.fn();
+    itemsMock = [{body: "New note", id: "12345"}]
+    wrapper = shallow(<ListItems list={itemsMock} deleteItem={deleteItemMock}/>)
   });
 
   it('renders title of application', () => {
@@ -24,11 +27,7 @@ describe('ListItems', () => {
     expect(textEl.text()).toContain("New note") 
   })
 
-  it('deletes an item from the list', () => {
-    const deleteItemMock = jest.fn();
-    const items = [{body: "New note", id: "12345"}]
-  
-    wrapper = shallow(<ListItems list={items} deleteItem={deleteItemMock}/>)
+  it('deletes a note from the list', () => {
     wrapper.find('#delete').simulate('click')
     expect(deleteItemMock).toHaveBeenCalledWith("12345")
   })
