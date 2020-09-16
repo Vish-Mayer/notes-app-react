@@ -51,6 +51,20 @@ class App extends Component {
         list: filteredList
       })
   }
+
+  setUpdate(body, id) {
+    const list = this.state.list
+    list.map(item => {
+      if(item.id === id){
+        item.body=body
+      }
+    })
+    this.setState ({
+      list: list
+    })
+    console.log(list)
+
+  }
     
   render() {
     return (
@@ -76,7 +90,8 @@ class App extends Component {
         
         <ListItems 
           list={this.state.list}
-          deleteItem = {this.deleteItem.bind(this)}>
+          deleteItem = {this.deleteItem.bind(this)}
+          setUpdate = {this.setUpdate.bind(this)}>
         </ListItems>
         <br/>
       </div>

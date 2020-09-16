@@ -6,13 +6,18 @@ function ListItems(props) {
     {
       return <div id='text-output' key={index}>
             <p>
-              <input type="text" id={index} value={item.body} />
+              <input 
+              type="text" 
+              id={index} 
+              value={item.body}
+              onChange={ (e) => props.setUpdate(e.target.value, item.id)}
+              />
               &nbsp;
               <button
               id="delete"
               onClick={ () => props.deleteItem(item.id)}>
                 X
-              </button>
+              </button>            
             </p>
         </div>
     })
