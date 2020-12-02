@@ -48,8 +48,7 @@ The key concepts that I attempted to adhere to were:
 * Seperation of concerns
 
 ## How to use
-#### Clone this repo onto your local machine
-    https://github.com/Vish-Mayer/bank-tech-test.git
+
 #### Run bundle install in the root file
     npm install
 #### Run tests
