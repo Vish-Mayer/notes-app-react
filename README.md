@@ -14,7 +14,7 @@
          |______|
          |  ||  |
          |__||__|
-    jgs  (__)(__)
+         (__)(__)
 ```
 ##### [*BRIEF*](#Brief) | [*USER STORIES*](#User-Stories) | [*APPROACH*](#Approach) | [*HOW TO USE*](#How-To-Use ) 
 
